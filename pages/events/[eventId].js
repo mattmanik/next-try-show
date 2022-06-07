@@ -4,6 +4,7 @@ import { getEventById } from "../../dummy-data";
 import EventContent from "../components/event-detail/event-content";
 import EventLogistics from "../components/event-detail/event-logistics";
 import EventSummary from "../components/event-detail/event-summary";
+import NewsletterRegistration from "../components/events/newsletter";
 
 function EventDetailPage() {
   const router = useRouter();
@@ -26,6 +27,7 @@ function EventDetailPage() {
       <EventContent>
         <p>{show.description}</p>
       </EventContent>
+      <NewsletterRegistration/>
     </Fragment>
   );
 }
