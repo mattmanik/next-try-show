@@ -26,8 +26,6 @@ async function handler(req,res) {
     const db = client.db();
      const result = await db.collection('comments').insertOne(newComment);
 
-     console.log(result,'<== result');
-
     newComment.id = result.insertedId;
 
     res.status(201).json({

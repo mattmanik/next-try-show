@@ -1,0 +1,33 @@
+import NextAuth from "next-auth"
+import GoogleProvider from "next-auth/providers/google"
+
+export default NextAuth({
+    providers: [
+        GoogleProvider({
+            clientId: "923968289200-448vc5d3q5h0tihnq6rgi9r0v9e31g91.apps.googleusercontent.com",
+            clientSecret: "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",
+            authorizationUrl: 'https://accounts.google.com/o/oauth2/v2/auth?prompt=consent&access_type=offline&response_type=code',
+        })
+    ],
+    jwt: {
+        encryption: true
+    },
+    secret: "secret token",
+    callbacks: {
+        async jwt({ token, account }) {
+            if (account?.accessToken) {
+                token.accessToken = account.accessToken
+            }
+            return token;
+        },
+        redirect: async ({url, _baseUrl}) => {
+            if (url === '/user') {
+                return Promise.resolve('/')
+            }
+            return Promise.resolve('/')
+        },
+        session: async ({ session }) => {
+            return session
+        }
+    }
+});
