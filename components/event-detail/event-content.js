@@ -7,5 +7,4 @@ function EventContent(props) {
     </section>
   );
 }
-
 export default EventContent;
